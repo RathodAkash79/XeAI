@@ -1,6 +1,5 @@
 const btn = document.querySelector(".talk");
 const content = document.querySelector(".content");
-
 const textInput = document.getElementById("text-input");
 const submitBtn = document.getElementById("submit-btn");
 
@@ -11,6 +10,7 @@ submitBtn.addEventListener("click", () => {
 });
 
 function speak(text) {
+  document.getElementById("output-p").textContent = text;
   const text_speak = new SpeechSynthesisUtterance(text);
 
   text_speak.rate = 1;
@@ -74,18 +74,30 @@ function takeCommand(command) {
       "_blank"
     );
     const finalText =
-      "This is what I found on the internet regarding " + message;
+    "This is what I found on the internet regarding " + message;
     speak(finalText);
   } else if (command.includes("what's your name?")) {
-    speak("My name is XeAI");
+    speak("My Name is XeAI");
+  } else if (command.includes("who i am?")) {
+    speak(" you are my boss");
+  } else if (command.includes("say")) {
+    const saymsg = command.replace("say", "")
+    speak(saymsg);
   } else if (command.includes("who is your boss?")) {
-    speak("My boss is rathod Akash");
-  } else if (command.includes(`about you`)) {
+    speak("Nova Brothers is My Boss ");
+  } else if (command.includes("speak" + "words")) {
+    speak("good, nope, yes, game, never, can, same , what, so, no, yeah, gg, minecraft, montage, capcut, really?, can, we, ust, for, nope, let's, hehe, this, is, lol, lmao, huh, that, keep, know, then, clap");
+  } else if (command.includes(`tell me about you`)) {
     speak(
-      `i am a Personal virtual assistant, who can talk with you. i can do things like open and close many website on just a single voice command, also you can give me text commands, for more details `
+      `i am a Personal virtual assistant, who can talk with you. i can do things like open and close many website on just a single voice command, also you can give me text commands, for more details contact Nova Brothers`
     );
+  } else if (command.includes("open my playlist")) {
+    window.open("C:\Users\Lenovo\Music\___________________.xspf");
+    speak("Opening your playlist...");
+  } else if (command.includes("open github")) {
+    window.open("https://github.com", "_blank");
+    speak("Opening GitHub...");
   } else if (command.includes("open google")) {
-    window.open(``);
     window.open("https://google.com", "_blank");
     speak("Opening Google...");
   } else if (command.includes("open youtube")) {
@@ -95,7 +107,7 @@ function takeCommand(command) {
     window.open("https://facebook.com", "_blank");
     speak("Opening Facebook...");
   } else if (command.includes("instagram")) {
-    window.open(`instagram.com`, _blank);
+    window.open(`https://instagram.com`, _blank);
     speak("Opening instagram...");
   } else if (command.includes("time")) {
     const time = new Date().toLocaleString(undefined, {
@@ -115,6 +127,11 @@ function takeCommand(command) {
     window.open("Calculator:///");
     const finalText = "Opening Calculator";
     speak(finalText);
+  } else if (command.includes(`shutdown`)) {
+    window.open(
+      `"C:\Users\Lenovo\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\shutdown.lnk"`
+    );
+  } else if (command.includes("open visual studio code")) {
   } else if (command.includes(`shutdown`)) {
     window.open(
       `"C:\Users\Lenovo\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\shutdown.lnk"`
@@ -151,8 +168,25 @@ function takeCommand(message) {
     speak("i am fine. what about you?");
   } else if (message.includes("what's your name?")) {
     speak("My name is XeAI");
+  } else if (message.includes("who i am?")) {
+    speak(" you are my boss");
+  } else if (message.includes("say")) {
+    const saymsg = message.replace("say", "")
+    speak(saymsg);
+  } else if (message.includes("speak",  "words")) {
+    speak("good, nope, yes, game, never, can, same , what, so, no, yeah, gg, minecraft, montage, capcut, really?, can, we, use, have, left, kill, for, nope, let's, hehe, this, is, lol, lmao, huh, that, keep, know, then, clap");
   } else if (message.includes("who is your boss?")) {
-    speak("My boss is Akash");
+    speak("Nova Brothers is My Boss ");
+  } else if (message.includes(`tell me about you`)) {
+    speak(
+      `i am a Personal virtual assistant, who can talk with you. i can do things like open and close many website on just a single voice command, also you can give me text commands, for more details contact Nova Brothers `
+    );
+  } else if (message.includes("open my playlist")) {
+    window.open("C:\Users\Lenovo\Music\___________________.xspf");
+    speak("Opening Your Playlist...");
+  } else if (message.includes("open spotify")) {
+    window.open("C:\Users\Lenovo\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Spotify.lnk");
+    speak("Opening Spotify...");
   } else if (message.includes("open google")) {
     window.open("https://google.com", "_blank");
     speak("Opening Google...");
@@ -163,7 +197,7 @@ function takeCommand(message) {
     window.open("https://facebook.com", "_blank");
     speak("Opening Facebook...");
   } else if (message.includes(`instagram`)) {
-    window.open(`instagram.com`, _blank);
+    window.open(`https://instagram.com`, "_blank");
     speak("Opening instagram...");
   } else if (
     message.includes("what is") ||
@@ -204,6 +238,10 @@ function takeCommand(message) {
     window.open("Calculator:///");
     const finalText = "Opening Calculator";
     speak(finalText);
+  } else if (message.includes(`shutdown`)) {
+    window.open(
+      `"C:\Users\Lenovo\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\shutdown.lnk"`
+    );
   } else if (message.includes("open vs code")) {
     window.open(
       "C:UsersLenovoAppDataRoamingMicrosoftWindowsStart MenuProgramsVisual Studio Code"
